@@ -26,6 +26,7 @@ public class BookService implements IBookService {
     public Book add(Book book) {
         return bookRepository.save(book);
     }
+
     @Override
     public Optional<Book> findById(Long bookId) {
         return Optional.ofNullable(bookRepository.findById(bookId)
