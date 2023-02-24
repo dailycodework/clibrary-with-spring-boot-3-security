@@ -20,7 +20,7 @@ public class BookController {
         return bookService.findById(bookId);
     }
     @GetMapping("/all")
-    public ResponseEntity<List<BookRecord>> getAllBooks(){
+    public ResponseEntity<List<Book>> getAllBooks(){
         return ResponseEntity.ok(bookService.getAllBooks());
     }
 

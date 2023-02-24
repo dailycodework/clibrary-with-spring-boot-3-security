@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IBookService {
-    List<BookRecord> getAllBooks();
+    List<Book> getAllBooks();
     Book add(Book book);
    Optional<Book> findById(Long bookId);
     void delete(Long bookId);

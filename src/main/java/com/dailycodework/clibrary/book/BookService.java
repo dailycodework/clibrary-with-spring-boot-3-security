@@ -14,12 +14,8 @@ public class BookService implements IBookService {
     private final BookRepository bookRepository;
 
     @Override
-    public List<BookRecord> getAllBooks() {
-        return bookRepository.findAll()
-                .stream()
-                .map(book -> new BookRecord(
-                book.getTitle(), book.getAuthor(), book.getEdition(), book.getISBN()))
-                .collect(Collectors.toList());
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 
     @Override
