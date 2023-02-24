@@ -37,4 +37,12 @@ public class ExceptionHandlerDemo {
         error.put("error", ex.getMessage());
         return error;
     }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public Map<String, String> userAlreadyExists(UserAlreadyExistsException ex){
+        Map<String, String> error = new HashMap<>();
+        error.put("error", ex.getMessage());
+        return error;
+    }
 }

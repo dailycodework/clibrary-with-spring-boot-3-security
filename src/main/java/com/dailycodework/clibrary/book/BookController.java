@@ -2,6 +2,7 @@ package com.dailycodework.clibrary.book;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +15,10 @@ import static org.springframework.http.HttpStatus.*;
 @RequiredArgsConstructor
 public class BookController {
     private final BookService bookService;
-    private final BookRepository bookRepository;
-
+    @GetMapping("/book/{id}")
+    public Optional<Book> getById(@PathVariable("id") Long bookId){
+        return bookService.findById(bookId);
+    }
     @GetMapping("/all")
     public ResponseEntity<List<BookRecord>> getAllBooks(){
         return ResponseEntity.ok(bookService.getAllBooks());
@@ -30,12 +33,8 @@ public class BookController {
     public ResponseEntity<Book> update(@RequestBody Book theBook){
         return new ResponseEntity<>(bookService.update(theBook), OK);
     }
-    @GetMapping("/book/{id}")
-    public Optional<Book> getById(@PathVariable("id") Long bookId){
-        return bookService.findById(bookId);
-    }
 
-    @DeleteMapping("/book/{id}")
+    @DeleteMapping("/book/delete/{id}")
     public void delete(@PathVariable("id") Long bookId){
         bookService.delete(bookId);
     }

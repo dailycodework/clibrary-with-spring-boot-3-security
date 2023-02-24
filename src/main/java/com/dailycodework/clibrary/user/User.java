@@ -20,7 +20,8 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
-    @NaturalId
+    @NaturalId(mutable = true)
     private String email;
     private String password;
+    private String role;
 }
